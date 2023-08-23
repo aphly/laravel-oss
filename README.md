@@ -9,3 +9,23 @@ mysql5.7+<br>
 `composer require aphly/laravel-oss` <br>
 `php artisan vendor:publish --provider="Aphly\LaravelOss\OssServiceProvider"` <br>
 
+/config/filesystems.php 数组 disks 中添加<br>
+`'oss' => [
+'driver' => 'oss',
+'key' => env('OSS_ACCESSKEYID'),
+'secret' => env('OSS_ACCESSKEYSECRET'),
+'bucket' => env('OSS_BUCKET'),
+'endpoint' => env('OSS_ENDPOINT'),
+'isCName' => env('OSS_ISCNAME'),
+'url' => env('OSS_URL')
+],`
+
+.env文件中修改<br>
+`FILESYSTEM_DISK=oss` <br>
+`OSS_ACCESSKEYID=` <br>
+`OSS_ACCESSKEYSECRET=` <br>
+`OSS_ENDPOINT=` <br>
+`OSS_BUCKET=` <br>
+`OSS_ISCNAME=` <br>
+`OSS_URL=` <br>
+
