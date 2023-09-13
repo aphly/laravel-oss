@@ -9,6 +9,9 @@ mysql5.7+<br>
 `composer require aphly/laravel-oss` <br>
 `php artisan vendor:publish --provider="Aphly\LaravelOss\OssServiceProvider"` <br>
 
+OSS需要安装包<br>
+或者 `composer require aliyuncs/oss-sdk-php`<br>
+
 /config/filesystems.php 数组 disks 中添加<br>
 `'oss' => [
 'driver' => 'oss',
