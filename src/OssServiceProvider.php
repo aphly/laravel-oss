@@ -34,7 +34,7 @@ class OssServiceProvider extends ServiceProvider
             $accessKey = $config['secret'];
             $endPoint  = $config['endpoint'];
             $bucket    = $config['bucket'];
-            $isCname   = empty($config['isCName']) ? false : $config['isCName'];
+            $isCname   = $config['isCName']=='true';
             $url    = $config['url'];
             $adapter = new OssAdapter($accessId, $accessKey, $endPoint,$isCname,$bucket,$url);
             return new FilesystemAdapter(

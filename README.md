@@ -10,7 +10,7 @@ mysql5.7+<br>
 `php artisan vendor:publish --provider="Aphly\LaravelOss\OssServiceProvider"` <br>
 
 OSS需要安装包<br>
-或者 `composer require aliyuncs/oss-sdk-php`<br>
+`composer require aliyuncs/oss-sdk-php`<br>
 
 /config/filesystems.php 数组 disks 中添加<br>
 `'oss' => [
@@ -24,11 +24,13 @@ OSS需要安装包<br>
 ],`
 
 .env文件中修改<br>
-`FILESYSTEM_DISK=oss` <br>
-`OSS_ACCESSKEYID=` <br>
-`OSS_ACCESSKEYSECRET=` <br>
-`OSS_ENDPOINT=` <br>
-`OSS_BUCKET=` <br>
-`OSS_ISCNAME=` <br>
-`OSS_URL=` <br>
+`FILESYSTEM_DISK=oss
+OSS_ACCESSKEYID=
+OSS_ACCESSKEYSECRET=
+OSS_ENDPOINT=
+OSS_BUCKET=
+OSS_ISCNAME=
+OSS_URL=` cname 域名<br> 
+
+OSS_ISCNAME 为true时，OSS_ENDPOINT 请填写自定义域名（比如：img.apixn.com），OSS_URL是http开头的自定义域名（比如：http：//img.apixn.com）
 

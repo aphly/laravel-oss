@@ -2,19 +2,9 @@
 
 namespace Aphly\LaravelOss;
 
+use Aphly\Laravel\Exceptions\ApiException;
 use League\Flysystem\Config;
 use League\Flysystem\FileAttributes;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\InvalidVisibilityProvided;
-use League\Flysystem\UnableToCheckExistence;
-use League\Flysystem\UnableToCopyFile;
-use League\Flysystem\UnableToCreateDirectory;
-use League\Flysystem\UnableToDeleteDirectory;
-use League\Flysystem\UnableToDeleteFile;
-use League\Flysystem\UnableToMoveFile;
-use League\Flysystem\UnableToReadFile;
-use League\Flysystem\UnableToRetrieveMetadata;
-use League\Flysystem\UnableToWriteFile;
 use OSS\OssClient;
 
 class OssAdapter implements \League\Flysystem\FilesystemAdapter
@@ -64,7 +54,7 @@ class OssAdapter implements \League\Flysystem\FilesystemAdapter
         try {
             $this->client->putObject($this->bucket, $path, $contents);
         } catch (\Exception $exception) {
-            throw UnableToWriteFile::atLocation($path, $exception->getMessage());
+            throw new ApiException(['code'=>1,'msg'=>$exception->getMessage()]);
         }
     }
 
@@ -77,7 +67,7 @@ class OssAdapter implements \League\Flysystem\FilesystemAdapter
         try {
             $this->client->uploadStream($this->bucket, $path, $contents, []);
         } catch (\Exception $exception) {
-            throw UnableToWriteFile::atLocation($path, $exception->getErrorCode(), $exception);
+            throw new ApiException(['code'=>1,'msg'=>$exception->getMessage()]);
         }
     }
 
@@ -90,7 +80,7 @@ class OssAdapter implements \League\Flysystem\FilesystemAdapter
         try {
             return $this->client->getObject($this->bucket, $path);
         } catch (\Exception $exception) {
-            throw UnableToReadFile::fromLocation($path, $exception->getMessage());
+            throw new ApiException(['code'=>1,'msg'=>$exception->getMessage()]);
         }
     }
 
@@ -111,7 +101,7 @@ class OssAdapter implements \League\Flysystem\FilesystemAdapter
         try {
             $this->client->deleteObject($this->bucket, $path);
         } catch (\Exception $ossException) {
-            throw UnableToDeleteFile::atLocation($path);
+            throw new ApiException(['code'=>1,'msg'=>$ossException->getMessage()]);
         }
     }
 
