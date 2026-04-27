@@ -27,10 +27,10 @@ OSS需要安装包<br>
 `FILESYSTEM_DISK=oss
 OSS_ACCESSKEYID=
 OSS_ACCESSKEYSECRET=
-OSS_ENDPOINT=
-OSS_BUCKET=
-OSS_ISCNAME=
+OSS_ENDPOINT=oss-us-west-1.aliyuncs.com
+OSS_BUCKET=aphly-com
+OSS_ISCNAME=false
 OSS_URL=` cname 域名<br> 
 
 OSS_ISCNAME 为true时，OSS_ENDPOINT 请填写自定义域名（比如：img.apixn.com），OSS_URL是http开头的自定义域名（比如：http：//img.apixn.com）
-
+OSS_ISCNAME 为false时，OSS_URL： https://aphly-com.oss-us-west-1.aliyuncs.com
